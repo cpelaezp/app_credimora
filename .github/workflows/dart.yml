@@ -29,3 +29,25 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+
+      # Step 4: Enable web support (if not already enabled)
+      - name: Enable web support
+        run: flutter config --enable-web
+
+      # Step 5: Build the Flutter web app
+      - name: Build Flutter Web
+        run: flutter build web --release
+
+      # Step 6: Upload build artifacts (Optional, for inspection)
+      - name: Upload Web Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: web-build
+          path: build/web/
+
+      # Step 7: Deploy (Optional, Example: GitHub Pages)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
