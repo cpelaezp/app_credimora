@@ -1,0 +1,6 @@
+[build]
+  command = "bash install_flutter_and_build.sh"
+  publish = "build/web"
+
+[context.production.environment]
+  FLUTTER_CHANNEL = "stable"
